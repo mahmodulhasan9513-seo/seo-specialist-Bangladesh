@@ -145,7 +145,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p>????? ??????????? Google-? ???? ???????? ????? ???? ???? ???? **???????? ?????????? SEO Audit** ???? ????? ???? ??????? ????!</p>
                 </div>
                 
-                <form class="contact-form-placeholder">action="https://formspree.io/f/xwxpyvoep" method="POST">
+                <form class="contact-form-placeholder"
                    <input type="hidden" name="_gotcha" style="display:none !important">
                     <p>????? ???????? ???????? ????? Contact Form-?? ??? ???? (????????? ????? ??)?</p>
                     <input type="text" name="name" placeholder="Your Name">
@@ -168,9 +168,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+   <script>
+  var form = document.querySelector('form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    fetch("https://formspree.io/f/xwxpyvoep", {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(function() {
+        alert("Thank you! Your message has been sent.");
+        form.reset();
+    });
+  });
+</script>
+
 </body>
 
 </html>
+
 
 
 
