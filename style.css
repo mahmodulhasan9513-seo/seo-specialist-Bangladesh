@@ -69,7 +69,7 @@ nav ul li a:hover {
 }
 
 .cta-link {
-    background-color: var(--accent-green);
+  background-color: var(--accent-green);
     padding: 8px 15px;
     border-radius: 5px;
     color: var(--dark-bg) !important;
@@ -332,6 +332,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
