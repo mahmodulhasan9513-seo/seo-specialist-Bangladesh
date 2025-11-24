@@ -69,7 +69,7 @@ nav ul li a:hover {
 }
 
 .cta-link {
-  background-color: var(--accent-green);
+    background-color: var(--accent-green);
     padding: 8px 15px;
     border-radius: 5px;
     color: var(--dark-bg) !important;
@@ -135,21 +135,20 @@ nav ul li a:hover {
     text-decoration: none;
     border-radius: 8px;
     transition: 0.3s;
+    border: none; /* ডিফল্ট বর্ডার সরিয়ে দিন */
 }
 
 .hero-btn:hover {
     background: #00aacc;
 }
 
-/* Add this to your style.css if you use input type="submit" */input.hero-btn {
-
--webkit-appearance: none; /* For consistent styling across browsers */
-
--moz-appearance: none;
-
-appearance: none;
-
-cursor: pointer;
+/* Fix for input type="submit" styling */
+input.hero-btn {
+    -webkit-appearance: none; /* For consistent styling across browsers */
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+} /* <--- এখানে বন্ধনীটি যোগ করা হয়েছে */
 
 /* Responsive adjustment for smaller screens */
 @media (max-width: 768px) {
@@ -264,7 +263,7 @@ h2 {
 }
 
 .placeholder-content ul li {
-border-radius: 5px;
+    border-radius: 5px;
     background-color: var(--card-bg) !important;
     font-weight: bold;
 }
@@ -300,7 +299,7 @@ border-radius: 5px;
 .contact-form-placeholder textarea {
     padding: 15px;
     border: 1px solid var(--secondary-text);
-    background-color: var(--accent-blue);
+    background-color: var(--card-bg); /* Input ব্যাকগ্রাউন্ড ঠিক করা হলো */
     color: var(--text-color);
     border-radius: 5px;
 }
