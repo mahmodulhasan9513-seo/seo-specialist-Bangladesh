@@ -290,7 +290,7 @@ border-radius: 5px;
 .contact-form-placeholder textarea {
     padding: 15px;
     border: 1px solid var(--secondary-text);
-    background-color: var(--dark-bg);
+    background-color: var(--accent-blue);
     color: var(--text-color);
     border-radius: 5px;
 }
@@ -333,6 +333,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
