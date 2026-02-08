@@ -174,6 +174,45 @@
         }
         
         /* ========================================
+           ANIMATIONS & KEYFRAMES
+        ======================================== */
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(76, 175, 80, 0.6), 0 0 40px rgba(0, 188, 212, 0.4); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* ========================================
            HEADER & NAVIGATION
         ======================================== */
         header {
@@ -214,6 +253,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.02em;
+            animation: float 3s ease-in-out infinite;
         }
         
         nav ul {
@@ -258,6 +298,7 @@
             border-radius: 6px;
             font-weight: 600;
             transition: all var(--transition-medium);
+            animation: glow 2s ease-in-out infinite;
         }
         
         .cta-link::after {
@@ -266,7 +307,6 @@
         
         .cta-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
         }
         
         /* ========================================
@@ -297,11 +337,6 @@
             animation: pulse 8s ease-in-out infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
-        }
-        
         .hero-content {
             display: grid;
             grid-template-columns: 300px 1fr;
@@ -328,11 +363,6 @@
             filter: blur(20px);
             z-index: -1;
             animation: rotate 10s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
         
         .hero-image {
@@ -381,11 +411,6 @@
             animation: slideIn 0.8s ease-out 0.6s both;
         }
         
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
         .location, .email {
             font-size: 1rem;
             color: var(--text-secondary);
@@ -421,11 +446,11 @@
             background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
             color: white;
             box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+            animation: glow 2s ease-in-out infinite;
         }
         
         .hero-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4);
         }
         
         .hero-btn-secondary {
@@ -437,17 +462,7 @@
         .hero-btn-secondary:hover {
             background: rgba(0, 188, 212, 0.1);
             transform: translateY(-3px);
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
         }
         
         /* ========================================
@@ -495,6 +510,7 @@
             background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
             margin: 1rem auto 0;
             border-radius: 2px;
+            animation: glow 2s ease-in-out infinite;
         }
         
         /* ========================================
@@ -548,6 +564,7 @@
             color: white;
             transform: translateY(-5px) rotate(5deg);
             box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
+            animation: glow 1s ease-in-out infinite;
         }
         
         /* ========================================
@@ -592,6 +609,7 @@
             border-color: var(--accent-green);
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(76, 175, 80, 0.2);
+            animation: glow 1.5s ease-in-out infinite;
         }
         
         .service-item i {
@@ -602,9 +620,10 @@
             background-clip: text;
             margin-bottom: 1.5rem;
             display: block;
+            animation: float 3s ease-in-out infinite;
         }
         
-        .service-item h2 {
+        .service-item > h2 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
@@ -615,7 +634,7 @@
             background-clip: unset;
         }
         
-        .service-item h2::after {
+        .service-item > h2::after {
             display: none;
         }
         
@@ -656,44 +675,49 @@
             line-height: 1.8;
         }
         
-        .service-details-inner h3,
-        .service-details-inner h4,
-        .service-details-inner h5,
-        .service-details-inner h6 {
-            color: var(--accent-green);
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
+        .service-details-inner h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
             font-weight: 600;
         }
         
-        .service-details-inner img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            border-radius: 8px;
-            margin: 1rem auto;
-            display: block;
-            border: 1px solid var(--border-color);
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
-        .service-details-inner ul {
-            padding-left: 1.5rem;
-            margin-top: 0.5rem;
+        .service-list li {
+            padding: 0.8rem 0 0.8rem 2rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            transition: all var(--transition-fast);
         }
         
-        .service-details-inner li {
-            margin-bottom: 0.5rem;
+        .service-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
         
-        .service-details-inner a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color var(--transition-fast);
+        .service-list li:hover {
+            color: var(--text-primary);
+            transform: translateX(5px);
         }
         
-        .service-details-inner a:hover {
-            border-bottom-color: var(--accent-cyan);
+        .service-contact {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
         
         /* ========================================
@@ -705,23 +729,40 @@
             border-radius: 12px;
             padding: 2rem;
             transition: all var(--transition-medium);
+            max-width: 380px;
         }
         
         .case-study-card:hover {
             border-color: var(--accent-cyan);
             box-shadow: 0 12px 40px rgba(0, 188, 212, 0.2);
+            transform: translateY(-8px);
+            animation: glow 1.5s ease-in-out infinite;
         }
         
         .case-study-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
+        }
+        
+        .case-study-card h4 {
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
         }
         
         .case-study-card img {
             width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 8px;
             margin: 1rem 0;
             border: 1px solid var(--border-color);
+            transition: transform var(--transition-medium);
+        }
+        
+        .case-study-card:hover img {
+            transform: scale(1.05);
         }
         
         .case-study-card ul {
@@ -756,17 +797,58 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 1.5rem;
+            animation: glow 2s ease-in-out infinite;
         }
         
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4);
         }
         
-        /* Video Embeds */
-        iframe {
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
             border-radius: 12px;
             border: 2px solid var(--border-accent);
+            transition: all var(--transition-medium);
+        }
+        
+        .video-container:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-wrapper {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-medium);
+        }
+        
+        .video-wrapper:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .video-caption {
+            text-align: center;
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 1rem;
         }
         
         /* ========================================
@@ -787,6 +869,12 @@
             border-radius: 12px;
             padding: 2.5rem;
             text-align: center;
+            transition: all var(--transition-medium);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        .free-audit-box:hover {
+            transform: translateY(-5px);
         }
         
         .free-audit-box h2 {
@@ -807,6 +895,12 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 2.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        #mc_embed_signup:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.2);
         }
         
         #mc_embed_signup h2 {
@@ -864,11 +958,11 @@
             border-radius: 8px;
             transition: all var(--transition-medium);
             font-family: var(--font-body);
+            animation: glow 2s ease-in-out infinite;
         }
         
         #mc-embedded-subscribe:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
         }
         
         /* ========================================
@@ -911,6 +1005,7 @@
             transition: all var(--transition-medium);
             z-index: 999;
             box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+            animation: glow 2s ease-in-out infinite;
         }
         
         .back-to-top.visible {
@@ -920,7 +1015,6 @@
         
         .back-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4);
         }
         
         /* ========================================
@@ -971,6 +1065,10 @@
             
             .container {
                 padding: 0 var(--spacing-sm);
+            }
+            
+            .case-study-card {
+                max-width: 100%;
             }
         }
         
@@ -1074,7 +1172,7 @@
     <!-- Services Section -->
     <section id="services">
         <div class="container">
-            <h2>My Core SEO Services</h2>
+            <h2>Core SEO Services</h2>
             <div class="service-grid">
                 
                 <!-- Service 1: On-Page SEO -->
@@ -1082,34 +1180,17 @@
                     <i class="fas fa-search"></i>
                     <h2>On-Page SEO</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h3>🔎 The Foundation of Your Ranking Success</h3>
-                            <p>Your website can only rank well when search engines like Google and your users clearly understand the context and value of your page content. On-Page SEO is the essential process of optimizing the internal elements of every web page.</p>
-                            
-                            <h4>✅ What Our Service Covers</h4>
-                            
-                            <h5>1. Keyword Placement and Content Mapping 🎯</h5>
-                            <img src="https://i.imgur.com/0JrpL3C.jpeg" alt="On-Page SEO Checklist and Keyword Strategy">
-                            <p>We strategically put your targeted keywords in the most impactful spots without hurting readability. Focus Areas: Optimizing Title Tag, Meta Description, URL Slug, and User Intent Analysis.</p>
-                            
-                            <h6>2. HTML Tag Optimization 🏗️</h6>
-                            <img src="https://i.imgur.com/eI3w8Lv.jpeg" alt="Technical SEO HTML Tag Optimization">
-                            <p>Heading tags (H1, H2, H3) define the structure. We ensure H1 Tag Integrity and use Hierarchical Tagging to improve user experience.</p>
-                            
-                            <h4>3. Advanced Content Refresh and E-E-A-T Focus ⭐</h4>
-                            <img src="https://i.imgur.com/7TRtQRU.jpeg" alt="Advanced Content Refresh and E-E-A-T Strategy">
-                            <p>Optimization ensures content is authoritative and trustworthy. E-E-A-T: We <a href="#about">organize content to show your expertise</a> and build user trust.</p>
-                            
-                            <h6>4. Image and Media Optimization 📸</h6>
-                            <p>We optimize image file sizes (compression) and use descriptive Alt Text to improve page loading speed and accessibility.</p>
-                            
-                            <h6>5. Internal and External Linking 🔗</h6>
-                            <img src="https://i.imgur.com/DLS80hy.jpeg" alt="Internal and External Link Building Structure">
-                            <p>A smart linking structure spreads Page Authority. We link relevant pages internally and to reputable, high-authority external sources.</p>
-                            
-                            <h6>Start Your On-Page Journey Today! ➡️</h6>
-                            <p>Book a Free On-Page Analysis Today:<br>📧 mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <h3>Foundation of Search Rankings</h3>
+                            <ul class="service-list">
+                                <li>Title tags, meta descriptions, and URL optimization</li>
+                                <li>Hierarchical heading structure (H1-H6)</li>
+                                <li>E-E-A-T authority signals integration</li>
+                                <li>Image compression and alt text optimization</li>
+                                <li>Internal and external link architecture</li>
+                            </ul>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1117,45 +1198,19 @@
                 <!-- Service 2: Off-Page SEO -->
                 <div class="service-item" id="off-page-optimization">
                     <i class="fas fa-link"></i>
-                    <h2>Off-Page SEO (Link Building)</h2>
+                    <h2>Off-Page SEO</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h2>🔗 Off-Page SEO: Building Authority and Trust</h2>
-                            <img src="https://i.imgur.com/WqlaLM1.jpeg" alt="Off-Page SEO Link Building Strategy">
-                            <p>While On-Page SEO improves your site's structure, Off-Page SEO focuses mainly on Link Building. This aspect boosts your website's authority, credibility, and position in the digital space.</p>
-                            
-                            <h3>Why is Off-Page SEO Important? 🚀</h3>
-                            <p>In Google's view, a backlink acts like a vote of confidence. More high-quality votes lead to higher domain authority and better search rankings.</p>
-                            
-                            <ul>
-                                <li><strong>Increases Domain Authority:</strong> Quality links enhance your site's overall authority, allowing you to rank for competitive keywords.</li>
-                                <li><strong>Drives Referral Traffic:</strong> Links from relevant, high-traffic sites bring direct, qualified visitors to your pages.</li>
-                                <li><strong>Builds Trust (E-E-A-T):</strong> Mentions from authoritative sources strengthen your <a href="#about">Expertise, Authoritativeness, and Trustworthiness</a>.</li>
+                            <h3>Authority Building Through Backlinks</h3>
+                            <ul class="service-list">
+                                <li>Editorial guest posting on high-authority sites</li>
+                                <li>Competitor backlink gap analysis</li>
+                                <li>Broken link reclamation strategies</li>
+                                <li>Unlinked brand mention conversion</li>
+                                <li>Toxic link audit and profile cleanup</li>
                             </ul>
-                            
-                            <h3>⭐ Our Strategic Link Building Services</h3>
-                            
-                            <h4>1. High-Quality Guest Posting Campaigns ✍️</h4>
-                            <img src="https://i.imgur.com/H8tVJuj.jpeg" alt="High-Quality Guest Posting Campaign">
-                            <p>We produce and publish original content on respected websites in your industry, securing relevant backlinks.</p>
-                            
-                            <h4>2. Competitor Backlink Analysis 🔍</h4>
-                            <p>We scrutinize your competitors' backlink profiles to find their most effective link sources and replicate those links ethically.</p>
-                            
-                            <h4>3. Broken Link Building 🔨</h4>
-                            <img src="https://i.imgur.com/6RxpPNi.jpeg" alt="Broken Link Building Strategy">
-                            <p>We find relevant websites with broken external links and suggest your quality content as a suitable replacement.</p>
-                            
-                            <h4>4. Unlinked Brand Mentions 💬</h4>
-                            <p>We watch for mentions of your brand that lack hyperlinks and reach out to secure the link.</p>
-                            
-                            <h4>5. Toxic Link Audit and Removal 🚫</h4>
-                            <img src="https://i.imgur.com/hgXfNbz.jpeg" alt="Toxic Link Audit">
-                            <p>We routinely analyze your backlink profile to disavow or remove spammy, low-quality links.</p>
-                            
-                            <h4>Elevate Your Authority Today! ➡️</h4>
-                            <p>📧 Email: mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1165,44 +1220,17 @@
                     <i class="fas fa-cogs"></i>
                     <h2>Technical SEO</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h2>⚙️ Technical SEO: Website Health & Performance</h2>
-                            <img src="https://i.imgur.com/qa0EN3R.jpeg" alt="Technical SEO Site Health">
-                            <p>Technical SEO optimizes your website's infrastructure so search engines can easily crawl, index, and rank your pages.</p>
-                            
-                            <h3>Why is Technical SEO Important? 🚀</h3>
-                            <p>Technical problems can prevent Google from seeing your content. A technically sound website gets you:</p>
-                            
-                            <ul>
-                                <li><strong>Better Crawling:</strong> Search bots can find and understand all your pages easily.</li>
-                                <li><strong>Faster Indexing:</strong> Your new content shows up in Google searches quickly.</li>
-                                <li><strong>Better User Experience:</strong> Improves Core Web Vitals and reduces bounce rates.</li>
-                                <li><strong>Mobile-First Indexing:</strong> Your site works great on all devices, which is how <a href="#about">Google determines rankings</a>.</li>
+                            <h3>Infrastructure Optimization</h3>
+                            <ul class="service-list">
+                                <li>Core Web Vitals and site speed optimization</li>
+                                <li>Mobile-first responsive design implementation</li>
+                                <li>Schema markup for rich snippet visibility</li>
+                                <li>XML sitemap and robots.txt configuration</li>
+                                <li>SSL/HTTPS security protocol setup</li>
                             </ul>
-                            
-                            <h3>🛠️ Our Technical SEO Services</h3>
-                            
-                            <h4>1. Site Speed and Core Web Vitals ⚡</h4>
-                            <p>We analyze and fix page speed issues, optimizing LCP, FID, and CLS to meet Google's standards.</p>
-                            
-                            <h4>2. Mobile-Friendliness 📱</h4>
-                            <img src="https://i.imgur.com/Oh9DewE.jpeg" alt="Mobile-Friendliness Check">
-                            <p>We ensure your site looks and works great on all screen sizes with responsive design.</p>
-                            
-                            <h4>3. Schema Markup 🧩</h4>
-                            <img src="https://i.imgur.com/ZG3hwyJ.jpeg" alt="Schema Markup Implementation">
-                            <p>We add structured data to help search engines understand your content and earn rich snippets.</p>
-                            
-                            <h4>4. Website Structure Optimization 🧭</h4>
-                            <img src="https://i.imgur.com/s9RDiJx.jpeg" alt="Website Structure Optimization">
-                            <p>We fix crawl issues by optimizing robots.txt, XML Sitemap, and resolving duplicate content.</p>
-                            
-                            <h4>5. Security and HTTPS 🛡️</h4>
-                            <p>We ensure your website uses a valid SSL certificate (HTTPS) for security and trust.</p>
-                            
-                            <h4>Ready to Optimize Your Site? ➡️</h4>
-                            <p>📧 Email: mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1210,43 +1238,19 @@
                 <!-- Service 4: Local SEO -->
                 <div class="service-item" id="local-seo">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h2>Local SEO / Geo Local SEO</h2>
+                    <h2>Local SEO</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h2>📍 Local SEO: Dominate Your Local Market</h2>
-                            <img src="https://i.imgur.com/RzOIAoS.jpeg" alt="Local SEO Strategy">
-                            <p>Local SEO helps your business appear when people search for services nearby. Getting seen on Google Maps and in "near me" searches is crucial to <a href="#about">grow and thrive</a>.</p>
-                            
-                            <h3>Why Local SEO Matters? 🎯</h3>
-                            <ul>
-                                <li><strong>Google Maps is Key:</strong> Ranking in the top 3 on the map brings immediate calls and visits.</li>
-                                <li><strong>Better Customers:</strong> Local searchers are usually ready to buy.</li>
-                                <li><strong>Local Competition:</strong> You're competing with nearby businesses, not huge corporations.</li>
-                                <li><strong>Mobile Matters:</strong> Most "near me" searches happen on phones.</li>
+                            <h3>Geographic Visibility Dominance</h3>
+                            <ul class="service-list">
+                                <li>Google Business Profile optimization for Map Pack</li>
+                                <li>NAP consistency across online directories</li>
+                                <li>Local link building and citation development</li>
+                                <li>Review generation and reputation management</li>
+                                <li>Location-based keyword targeting</li>
                             </ul>
-                            
-                            <h3>⭐ Our Local SEO Strategy</h3>
-                            
-                            <h4>1. Google Business Profile Optimization ✅</h4>
-                            <p>We optimize your Google Business Profile to maximize visibility in the Map Pack.</p>
-                            
-                            <h4>2. Local Listings (NAP Consistency) ☎️</h4>
-                            <img src="https://i.imgur.com/sdRVbkh.jpeg" alt="Local Listings NAP Consistency">
-                            <p>We ensure your Name, Address, and Phone number are consistent across all online directories.</p>
-                            
-                            <h4>3. Local Link Building 🔗</h4>
-                            <p>We get links from local businesses, organizations, and news sites to show community authority.</p>
-                            
-                            <h4>4. Review Management ⭐</h4>
-                            <img src="https://i.imgur.com/5TxQuS7.jpeg" alt="Local Reviews Management">
-                            <p>We help you get authentic customer reviews and respond to all reviews professionally.</p>
-                            
-                            <h4>5. Local Keyword Targeting 🔍</h4>
-                            <p>We find local search phrases and optimize your website to target specific areas and services.</p>
-                            
-                            <h4>Ready to Dominate Locally? 🚀</h4>
-                            <p>📧 Email: mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1256,39 +1260,17 @@
                     <i class="fas fa-key"></i>
                     <h2>Keyword Research</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h2>🗝️ Keyword Research: The Foundation for SEO Success</h2>
-                            <img src="https://i.imgur.com/IIap3mq.jpeg" alt="Keyword Research Foundation">
-                            <p>Keyword research is the starting point in digital marketing. It's about finding the words and phrases people actually type when looking for what you offer.</p>
-                            
-                            <h3>Why is Keyword Research Important? 🤔</h3>
-                            <ul>
-                                <li><strong>Spot Opportunities:</strong> Find keywords with high search volume and conversion potential.</li>
-                                <li><strong>Match User Intent:</strong> Ensure your page gives people the answer they're looking for.</li>
-                                <li><strong>Analyze Competition:</strong> Figure out keyword difficulty to target easier wins first.</li>
-                                <li><strong>Save Resources:</strong> Avoid wasting time on keywords nobody uses.</li>
+                            <h3>Strategic Keyword Intelligence</h3>
+                            <ul class="service-list">
+                                <li>Search intent classification and analysis</li>
+                                <li>Competitive keyword gap identification</li>
+                                <li>Long-tail opportunity mining for conversions</li>
+                                <li>Page-level keyword mapping strategy</li>
+                                <li>Search volume and difficulty assessment</li>
                             </ul>
-                            
-                            <h3>🛠️ Our Keyword Research Process</h3>
-                            
-                            <h4>1. User Intent Analysis 💡</h4>
-                            <img src="https://i.imgur.com/uZCO53r.jpeg" alt="User Intent Analysis">
-                            <p>We categorize keywords by intent: Informational, Navigational, or Transactional.</p>
-                            
-                            <h4>2. Competitor Keyword Gap Analysis 🕵️</h4>
-                            <p>We check your competitors to find keywords they rank for that you're missing.</p>
-                            
-                            <h4>3. Long-Tail Keyword Discovery 🔗</h4>
-                            <img src="https://i.imgur.com/ooI7bvG.jpeg" alt="Long-Tail Keyword Discovery">
-                            <p>We target longer phrases that bring in customers ready to buy.</p>
-                            
-                            <h4>4. Keyword Mapping 🗺️</h4>
-                            <img src="https://i.imgur.com/3niEI7X.jpeg" alt="Keyword Mapping Strategy">
-                            <p>We create a plan for which keywords each page should target to avoid cannibalization.</p>
-                            
-                            <h4>Ready to Find Your Ranking Opportunities? 🚀</h4>
-                            <p>📧 Email: mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1298,42 +1280,17 @@
                     <i class="fas fa-magic"></i>
                     <h2>Content Optimization</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h2>✍️ Content Optimization: Maximize Content Performance</h2>
-                            <img src="https://i.imgur.com/G9PaAD5.jpeg" alt="Content Optimization Strategy">
-                            <p>Content Optimization is about refining your website's pages to rank higher, get more traffic, and convert visitors into customers.</p>
-                            
-                            <h3>Why Keep Content Fresh? 🌱</h3>
-                            <ul>
-                                <li><strong>Boost Rankings:</strong> Improve underperforming pages to reach the top of search results.</li>
-                                <li><strong>Improve Readability:</strong> Well-optimized content is easier to read and keeps visitors engaged.</li>
-                                <li><strong>Show Expertise:</strong> By including reliable sources and updated details, you <a href="#about">prove your content is expert and trustworthy</a>.</li>
-                                <li><strong>Stay Current:</strong> Search engines prefer fresh, updated content.</li>
+                            <h3>Content Performance Maximization</h3>
+                            <ul class="service-list">
+                                <li>Comprehensive content audit and gap analysis</li>
+                                <li>E-E-A-T authority signal enhancement</li>
+                                <li>Readability and user experience improvement</li>
+                                <li>Semantic topic coverage and LSI integration</li>
+                                <li>Strategic internal linking distribution</li>
                             </ul>
-                            
-                            <h3>🛠️ Our Content Optimization Process</h3>
-                            
-                            <h4>1. Content Audit 📝</h4>
-                            <img src="https://i.imgur.com/eGR8Rsd.jpeg" alt="Content Audit Gap Analysis">
-                            <p>We analyze all existing content to find underperforming, outdated, or poorly-targeted pages.</p>
-                            
-                            <h4>2. E-E-A-T Enhancement ⭐</h4>
-                            <img src="https://i.imgur.com/MifGJ9E.jpeg" alt="E-E-A-T Optimization">
-                            <p>We add expert quotes, author bios, facts, and links to trusted sources to prove authority.</p>
-                            
-                            <h4>3. Readability Improvement 📖</h4>
-                            <img src="https://i.imgur.com/bseUIYb.jpeg" alt="Readability and UX Improvement">
-                            <p>We break up large text blocks, use clear headings, and simplify language for your audience.</p>
-                            
-                            <h4>4. Topic Coverage & Keywords 🔑</h4>
-                            <p>We ensure comprehensive topic coverage with related keywords and semantic terms.</p>
-                            
-                            <h4>5. Internal Linking 🔗</h4>
-                            <p>We add strategic internal links to distribute authority and help users navigate.</p>
-                            
-                            <h4>Want Your Content to Rank Higher? ⬆️</h4>
-                            <p>📧 Email: mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1343,39 +1300,17 @@
                     <i class="fas fa-chart-line"></i>
                     <h2>Analytics & Reporting</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h2>📊 Analytics: Data-Driven Success</h2>
-                            <img src="https://i.imgur.com/r3ujJSV.jpeg" alt="Analytics Dashboard">
-                            <p>SEO is about using data. Google Analytics and Search Console let us connect your SEO work to real performance.</p>
-                            
-                            <h3>Why Monitor Your Data? 🧐</h3>
-                            <ul>
-                                <li><strong>Real Results:</strong> Track actual traffic, clicks, and conversions from our efforts.</li>
-                                <li><strong>User Behavior:</strong> See how people use your site and where they come from.</li>
-                                <li><strong>Site Health:</strong> GSC reveals crawling errors, indexing issues, and security problems.</li>
-                                <li><strong>Keyword Performance:</strong> See exact keywords you rank for and the clicks you get.</li>
+                            <h3>Performance Intelligence</h3>
+                            <ul class="service-list">
+                                <li>GA4 and Search Console setup with tracking</li>
+                                <li>Monthly performance reporting and insights</li>
+                                <li>Technical health monitoring and alerts</li>
+                                <li>Conversion tracking and attribution analysis</li>
+                                <li>ROI measurement and optimization recommendations</li>
                             </ul>
-                            
-                            <h3>🛠️ Our Reporting & Analysis</h3>
-                            
-                            <h4>1. GA4 & GSC Setup ✅</h4>
-                            <p>We ensure proper setup and configuration for accurate data tracking.</p>
-                            
-                            <h4>2. Performance Monitoring 📊</h4>
-                            <img src="https://i.imgur.com/wvnZUhd.jpeg" alt="Traffic Analysis Dashboard">
-                            <p>We provide monthly reports focusing on metrics that matter to your business.</p>
-                            
-                            <h4>3. Technical Issue Detection ⚠️</h4>
-                            <img src="https://i.imgur.com/l5aSQQG.jpeg" alt="Search Console Health Monitoring">
-                            <p>We use Search Console to find and fix issues before they hurt rankings.</p>
-                            
-                            <h4>4. Conversion Tracking 🎯</h4>
-                            <img src="https://i.imgur.com/F0ZWaBe.jpeg" alt="Conversion Tracking Setup">
-                            <p>We set up goal tracking to measure leads, sales, downloads, and other conversions.</p>
-                            
-                            <h4>Ready to See Your SEO Results? 📈</h4>
-                            <p>📧 Email: mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1385,42 +1320,17 @@
                     <i class="fas fa-search-dollar"></i>
                     <h2>SEO Audit</h2>
                     <details>
-                        <summary>Learn More</summary>
+                        <summary>View Details</summary>
                         <div class="service-details-inner">
-                            <h2>🔍 SEO Audit: Your Roadmap to Better Rankings</h2>
-                            <img src="https://i.imgur.com/2rzCdjW.jpeg" alt="SEO Audit Roadmap">
-                            <p>An SEO audit is a comprehensive analysis of your entire website to find issues, opportunities, and create a data-driven action plan.</p>
-                            
-                            <h3>Why Start with an Audit? 🛣️</h3>
-                            <ul>
-                                <li><strong>Finds Hidden Problems:</strong> Discovers technical issues holding you back.</li>
-                                <li><strong>Prioritized To-Do List:</strong> Shows what to fix first for best results.</li>
-                                <li><strong>Competitive Analysis:</strong> Reveals what competitors do well and how to match them.</li>
-                                <li><strong>Strong Foundation:</strong> Ensures your site is solid before adding content or links.</li>
+                            <h3>Comprehensive SEO Diagnostic</h3>
+                            <ul class="service-list">
+                                <li>Technical infrastructure and crawlability analysis</li>
+                                <li>On-page content and keyword evaluation</li>
+                                <li>Backlink profile quality assessment</li>
+                                <li>Competitive positioning and benchmarking</li>
+                                <li>Prioritized action plan with implementation roadmap</li>
                             </ul>
-                            
-                            <h3>🛠️ What We Analyze</h3>
-                            
-                            <h4>1. Technical Health ⚙️</h4>
-                            <img src="https://i.imgur.com/3p7brkY.jpeg" alt="Technical Health Audit">
-                            <p>We check that Google can find and crawl every page. Includes: site speed, mobile-friendliness, sitemaps, robots.txt, and HTTPS.</p>
-                            
-                            <h4>2. On-Page Content 📝</h4>
-                            <p>We check if your content is optimized and using the right keywords. Includes: keyword optimization, heading structure, <a href="#about">E-E-A-T signals</a>, and internal linking.</p>
-                            
-                            <h4>3. Backlink Profile 🔗</h4>
-                            <img src="https://i.imgur.com/0m0IiEU.jpeg" alt="Backlink Profile Audit">
-                            <p>We analyze your backlink quality. Includes: finding toxic links, checking domain authority, and identifying link opportunities.</p>
-                            
-                            <h4>4. Competitive Analysis 🥊</h4>
-                            <img src="https://i.imgur.com/TijesSe.jpeg" alt="Competitive Analysis">
-                            <p>We analyze your top competitors. Includes: their best pages, link sources, and keyword rankings.</p>
-                            
-                            <h4>5. Actionable Deliverables 📊</h4>
-                            <p>You get a prioritized list of fixes with step-by-step instructions.</p>
-                            
-                            <h4>Want to See Your SEO Potential? 🚀</h4>
-                            <p>📧 Email: mahmodulhasan9513@gmail.com<br>📞 WhatsApp: 01618721289</p>
+                            <p class="service-contact"><strong>Contact:</strong> mahmodulhasan9513@gmail.com | WhatsApp: 01618721289</p>
                         </div>
                     </details>
                 </div>
@@ -1432,136 +1342,131 @@
     <!-- Case Studies Section -->
     <section id="case-studies" class="accent-bg">
         <div class="container">
-            <h2>Projects / Case Studies</h2>
+            <h2>Case Studies & Results</h2>
             
             <p style="text-align: center; margin-bottom: 3rem; color: var(--text-secondary); max-width: 800px; margin-left: auto; margin-right: auto;">
-                My own website is my <strong>live platform for demonstrating expertise</strong>. I have created it as a Case Study. These results prove that the strategies I offer are effective and data-driven.
+                Demonstrating expertise through measurable results. My website serves as a live case study showcasing data-driven SEO methodology.
             </p>
             
             <div class="case-study-grid">
                 
-                <!-- Case Study 1: Website Performance -->
+                <!-- Case Study 1 -->
                 <div class="case-study-card" style="border-color: var(--accent-green);">
-                    <h3 style="color: var(--accent-green);">1. Website Performance: The Foundation 🌐</h3>
+                    <h3 style="color: var(--accent-green);">Organic Growth Performance</h3>
                     <img src="https://i.imgur.com/KCc7f6Q.png" alt="GA4 Traffic Report">
-                    <p><strong>Purpose:</strong> To validate foundational SEO expertise by generating organic visibility and high-quality traffic on a brand-new domain.</p>
+                    <p><strong>Objective:</strong> Establish organic visibility for new domain.</p>
                     
-                    <h4>📈 Key Results (GA4 Data - Last 28 Days):</h4>
+                    <h4>Key Metrics (28 Days):</h4>
                     <ul>
-                        <li><strong>Organic Dominance:</strong> 46.77% of total traffic from Organic Search</li>
-                        <li><strong>Strong User Quality:</strong> Average Engagement Time of 1 minute 11 seconds</li>
+                        <li><strong>46.77%</strong> organic search traffic share</li>
+                        <li><strong>1:11</strong> average session duration</li>
                     </ul>
                     
-                    <h4>🌟 Proof of Quality:</h4>
-                    <img src="https://i.imgur.com/zdVcQrh.png" alt="GA4 Demographic Report">
+                    <h4>Geographic Performance:</h4>
+                    <img src="https://i.imgur.com/zdVcQrh.png" alt="Demographic Report">
                     <ul>
-                        <li><strong>Exceptional Local Engagement:</strong> Visitors from Bangladesh spent an average of 11 minutes 52 seconds on the site</li>
+                        <li><strong>11:52</strong> average engagement (Bangladesh)</li>
                     </ul>
                 </div>
                 
-                <!-- Case Study 2: Local SEO -->
+                <!-- Case Study 2 -->
                 <div class="case-study-card" style="border-color: var(--accent-cyan);">
-                    <h3 style="color: var(--accent-cyan);">2. Local SEO Expertise (GMB Data) 📍</h3>
-                    <p><strong>Purpose:</strong> To demonstrate the ability to drive direct customer actions through Google Business Profile optimization.</p>
+                    <h3 style="color: var(--accent-cyan);">Local Search Dominance</h3>
+                    <img src="https://i.imgur.com/whDr0Qb.png" alt="GMB Performance">
+                    <p><strong>Objective:</strong> Convert local visibility into customer actions.</p>
                     
-                    <h4>🔍 Local Visibility (Nov 2025):</h4>
-                    <img src="https://i.imgur.com/whDr0Qb.png" alt="GMB Performance Report">
+                    <h4>Visibility Metrics:</h4>
                     <ul>
-                        <li><strong>Total Views:</strong> 66 people viewed the business profile</li>
-                        <li><strong>Profile Breakdown:</strong> 41% of views from Google Search (Desktop)</li>
+                        <li><strong>66</strong> profile views (November)</li>
+                        <li><strong>41%</strong> desktop search discovery</li>
                     </ul>
                     
-                    <h4>📞 Direct Customer Actions:</h4>
-                    <img src="https://i.imgur.com/fqgnMvw.png" alt="GMB Calls Report" style="max-width: 150px; display: inline-block; margin-right: 5px;">
-                    <img src="https://i.imgur.com/qaO14NH.png" alt="GMB Clicks Report" style="max-width: 150px; display: inline-block;">
+                    <h4>Conversion Actions:</h4>
+                    <img src="https://i.imgur.com/fqgnMvw.png" alt="GMB Calls" style="height: 200px;">
+                    <img src="https://i.imgur.com/qaO14NH.png" alt="GMB Clicks" style="height: 200px;">
                     <ul>
-                        <li><strong>Total Actions:</strong> 15 direct customer actions (6 Calls + 9 Website Clicks)</li>
+                        <li><strong>15</strong> total actions (6 calls + 9 clicks)</li>
                     </ul>
                 </div>
                 
-                <!-- Case Study 3: Strategic Analysis -->
+                <!-- Case Study 3 -->
                 <div class="case-study-card" style="border-color: #FF9800;">
-                    <h3 style="color: #FF9800;">3. Strategic Analysis: Planning & Execution 📋</h3>
-                    <p><strong>Purpose:</strong> To demonstrate critical analytical skills required for client projects.</p>
+                    <h3 style="color: #FF9800;">Strategic Analysis Capability</h3>
+                    <img src="https://i.imgur.com/A1VUblb.jpeg" alt="Audit Report">
+                    <p><strong>Objective:</strong> Demonstrate technical diagnostic proficiency.</p>
                     
-                    <h4>🔍 Audit Case Study: HABA USA</h4>
-                    <img src="https://i.imgur.com/A1VUblb.jpeg" alt="SEO Audit Report">
+                    <h4>HABA USA Audit:</h4>
                     <ul>
-                        <li><strong>Error Identification:</strong> Successfully identified Critical Technical Issues (Missing Meta Descriptions, Alt Tags, Redirect Chains)</li>
+                        <li>Critical issue identification</li>
+                        <li>Technical barrier resolution</li>
+                        <li>Content architecture recommendations</li>
                     </ul>
                     
-                    <h4>📝 On-Page Strategy:</h4>
-                    <img src="https://i.imgur.com/jCmw9y2.jpeg" alt="On-Page Optimization Report">
-                    <ul>
-                        <li><strong>Actionable Plan:</strong> Provided clear recommendations for On-Page Optimization (H1/H2 structure, Title Tag relevance)</li>
-                    </ul>
+                    <img src="https://i.imgur.com/jCmw9y2.jpeg" alt="Strategy Report">
                 </div>
                 
             </div>
             
             <!-- Video Section -->
             <div style="max-width: 900px; margin: 4rem auto;">
-                <h3 style="text-align: center; color: var(--text-primary); font-size: 1.8rem; margin-bottom: 2rem;">
-                    🎬 Watch My Personal Introduction Video
+                <h3 style="text-align: center; color: var(--text-primary); font-size: 1.6rem; margin-bottom: 2rem;">
+                    Professional Introduction
                 </h3>
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 2px solid var(--accent-cyan);">
+                <div class="video-container">
                     <iframe 
                         width="100%" 
                         height="100%" 
                         src="https://www.youtube.com/embed/JiZWxk2RgoA" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                        allowfullscreen>
                     </iframe>
                 </div>
             </div>
             
             <!-- E-commerce Case Studies -->
             <div style="max-width: 900px; margin: 3rem auto;">
-                <h3 style="text-align: center; color: var(--text-primary); font-size: 1.5rem; margin-bottom: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-                    📹 E-commerce SEO Mastery: Watch My Case Study Videos
+                <h3 style="text-align: center; color: var(--text-primary); font-size: 1.4rem; margin-bottom: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    E-commerce Optimization Case Studies
                 </h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <!-- Video 1 -->
-                    <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--accent-green);">
-                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="video-wrapper">
+                        <div class="video-container">
                             <iframe 
                                 width="100%" 
                                 height="100%" 
                                 src="https://www.youtube.com/embed/0mpQT2xuCbc" 
                                 frameborder="0" 
-                                allowfullscreen 
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                                allowfullscreen>
                             </iframe>
                         </div>
-                        <p style="text-align: center; color: var(--accent-green); font-weight: 600;">1. Slow SEO Fix & Power Optimization</p>
+                        <p class="video-caption">Performance Optimization Strategy</p>
                     </div>
                     
                     <!-- Video 2 -->
-                    <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--accent-green);">
-                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="video-wrapper">
+                        <div class="video-container">
                             <iframe 
                                 width="100%" 
                                 height="100%" 
                                 src="https://www.youtube.com/embed/GFqeUo0ZJwo" 
                                 frameborder="0" 
-                                allowfullscreen 
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                                allowfullscreen>
                             </iframe>
                         </div>
-                        <p style="text-align: center; color: var(--accent-green); font-weight: 600;">2. Traffic vs. Sales Problem & Revenue Focus</p>
+                        <p class="video-caption">Revenue-Focused Conversion</p>
                     </div>
                 </div>
             </div>
             
             <!-- Commitment Section -->
             <div style="text-align: center; margin-top: 4rem; background: var(--bg-card); padding: 3rem; border-radius: 12px; border: 1px solid var(--border-accent);">
-                <h3 style="color: var(--text-primary); font-size: 1.5rem; margin-bottom: 1rem;">My Commitment:</h3>
-                <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
-                    "The same data-driven and effective strategies I utilized to achieve rapid indexing and early organic visibility for my own domain are what I will apply to ensure your business achieves sustainable, profitable growth."
+                <h3 style="color: var(--text-primary); font-size: 1.4rem; margin-bottom: 1rem;">Commitment to Excellence</h3>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; line-height: 1.8;">
+                    Data-driven strategies proven through documented results. The same methodologies that established my rapid organic growth will drive your sustainable business success.
                 </p>
-                <a href="#contact" class="submit-btn">Book Your Free Consultation Now</a>
+                <a href="#contact" class="submit-btn">Schedule Consultation</a>
             </div>
             
         </div>
@@ -1570,12 +1475,12 @@
     <!-- Blog Section -->
     <section id="blog">
         <div class="container">
-            <h2>SEO Tips & Insights</h2>
+            <h2>SEO Insights</h2>
             <div style="text-align: center; padding: 3rem; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-color);">
-                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                    Coming Soon: In-depth SEO guides, case studies, and industry insights to help you master search engine optimization.
+                <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                    Advanced SEO strategies, case studies, and algorithm insights.
                 </p>
-                <p style="color: var(--text-muted);">Stay tuned for actionable SEO tips and tutorials!</p>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Coming Soon</p>
             </div>
         </div>
     </section>
@@ -1587,9 +1492,9 @@
             <div class="contact-grid">
                 
                 <div class="free-audit-box">
-                    <h2>🎁 Free SEO Audit Offer!</h2>
-                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 1.1rem;">
-                        Get a comprehensive SEO audit of your website absolutely free. Discover what's holding your site back and receive actionable recommendations to improve your rankings.
+                    <h2>Complimentary SEO Audit</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 1.05rem; line-height: 1.7;">
+                        Comprehensive website analysis with actionable recommendations to improve search performance and organic visibility.
                     </p>
                 </div>
                 
@@ -1607,7 +1512,7 @@
                             <h2>Contact Form</h2>
                             
                             <div class="mc-field-group">
-                                <label for="mce-FNAME">Your Name</label>
+                                <label for="mce-FNAME">Name</label>
                                 <input type="text" name="FNAME" id="mce-FNAME" required>
                             </div>
                             
@@ -1617,7 +1522,7 @@
                             </div>
                             
                             <div class="mc-field-group">
-                                <label for="mce-WEBSITE">Your Website (Optional)</label>
+                                <label for="mce-WEBSITE">Website (Optional)</label>
                                 <input type="text" name="WEBSITE" id="mce-WEBSITE">
                             </div>
                             
@@ -1736,7 +1641,7 @@
             });
         }, observerOptions);
         
-        document.querySelectorAll('.service-item, .case-study-card').forEach(el => {
+        document.querySelectorAll('.service-item, .case-study-card, .video-wrapper').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
