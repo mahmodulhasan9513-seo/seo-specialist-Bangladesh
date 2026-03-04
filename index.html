@@ -121,11 +121,11 @@
 
         .hero-inner {
             max-width: 1300px; margin: 0 auto; padding: 5rem 2rem;
-            display: grid; grid-template-columns: 380px 1fr;
+            display: grid; grid-template-columns: 260px 1fr;
             gap: 6rem; align-items: center; position: relative; z-index: 2;
         }
 
-        .hero-photo-wrap { position: relative; }
+        .hero-photo-wrap { position: relative; max-width: 260px; }
         .hero-photo-wrap::before {
             content: '';
             position: absolute; inset: -2px;
@@ -528,7 +528,7 @@
                 </h1>
                 <div class="hero-meta">
                     <div class="hero-meta-row"><i class="fas fa-map-marker-alt"></i> Uttara, Dhaka, Bangladesh</div>
-                    <div class="hero-meta-row"><i class="fas fa-envelope"></i> mahmodulhasan9513@gmail.com</div>
+                    <div class="hero-meta-row"><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="234e424b4e4c47564f4b4250424d1a16121063444e424a4f0d404c4e">[email&#160;protected]</a></div>
                 </div>
                 <p class="hero-desc">
                     E-E-A-T focused SEO strategies for sustainable organic growth. Specializing in Technical SEO, AEO, Semantic SEO, and data-driven campaigns that rank and convert.
@@ -843,7 +843,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Header scroll
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
@@ -868,10 +868,4 @@
 
         // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
-</body>
-</html>
+            entries.forEach(e => { if
